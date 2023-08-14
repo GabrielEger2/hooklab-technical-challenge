@@ -1,28 +1,27 @@
-# app.py
-from flask import Flask, jsonify
-from movies_data import get_average_rating, get_highest_rated_film, get_lowest_rated_film
+from data_analysis import analyse_data
+from movies_data import movies_data
+from web_scrapping import create_csv_file
+import time
 
-# Init app
-app = Flask(__name__)
+while True:
+    print("web scrapping : 1")
+    print("movies data : 2")
+    print("data analysis : 3")
+    print("exit : 4")
 
-@app.route('/', methods=['GET'])
-def hello_world():
-    return jsonify({'msg': 'Hello World!'})
+    answer = input("select a code challenge: ")
 
-@app.route('/movies-data', methods=['GET'])
-def movie_data():
-    average_rating = get_average_rating()
-    highest_rated_film = get_highest_rated_film()
-    lowest_rated_film = get_lowest_rated_film()
-
-    response = {
-        'average_rating': average_rating,
-        'highest_rated_film_title': highest_rated_film['title'],
-        'lowest_rated_film_year': lowest_rated_film['year']
-    }
-    
-    return jsonify(response)
-
-# Run Server
-if __name__ == "__main__":
-    app.run(debug=True)
+    if answer == "1":
+        create_csv_file()
+        time.sleep(2) 
+    elif answer == "2":
+        movies_data()
+        time.sleep(2) 
+    elif answer == "3":
+        analyse_data()
+        time.sleep(2) 
+    elif answer == "4":
+        break
+    else:
+        print("Invalid input. Please select a valid option.")
+        time.sleep(1)

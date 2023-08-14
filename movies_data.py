@@ -1,4 +1,4 @@
-# movies_data.py
+# Films data
 films = [
     {"title": "The Lord of the Rings", "year": 2001, "rating": 8.8},
     {"title": "Matrix", "year": 1999, "rating": 9.3},
@@ -16,6 +16,7 @@ def get_highest_rated_film():
 def get_lowest_rated_film():
     return min(films, key=lambda x: x["rating"])
 
-print(f"Average ratings of the films: {get_average_rating()}")
-print(f"Film with the highest rating: {get_highest_rated_film()['title']}")
-print(f"Year of release of the film with the lowest rating: {get_lowest_rated_film()['year']}")
+def movies_data():
+    print(f"Average ratings of the films: {get_average_rating()}")
+    print(f"Film with the highest rating: {get_highest_rated_film()['title']}")
+    print(f"Year of release of the film with the lowest rating: {get_lowest_rated_film()['year']}")
